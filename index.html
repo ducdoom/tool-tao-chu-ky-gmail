@@ -63,7 +63,7 @@
         <div class="row">
 
             <!-- Form -->
-            <div class="col-5">
+            <div class="col-6">
                 <div class="row mb-3">
                     <div class="col-4">
                         <label class="col-form-label" for="">Tên</label>
@@ -102,7 +102,7 @@
             </div>
 
             <!-- OUTPUT -->
-            <div class="col-7">
+            <div class="col-6">
                 <!-- <div class="row">
                     <div class="col-6 mx-5 left-container">
                         <div class="row">
@@ -353,7 +353,7 @@
 
                 $("#output-name").text(user.name);
                 $("#output-title").text(user.title);
-                $("#output-mobile").text(user.mobile);
+                $("#output-mobile").text(formatMobile(user.mobile));
                 $("#output-email").text(user.email);
                 $("#output-email").attr("href", "mailto:" + user.email);
             });
@@ -405,6 +405,12 @@
                 return false;
             }
             return true;
+        }
+
+        function formatMobile(mobile){
+            //from mobile input like 0979736090 to 0979.736.090
+            var result = mobile.substring(0, 4) + "." + mobile.substring(4, 7) + "." + mobile.substring(7, 10);
+            return result;
         }
 
         function User() {
